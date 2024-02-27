@@ -1,0 +1,32 @@
+.logo-container {
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-container h1 {
+    font-size: 24px;
+    margin-left: 18px;
+    font-weight: 700;
+}
+
+@media (min-width: 576px) {
+
+    .logo-container h1 {
+        margin-left: 25px;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .logo-container h1 {
+        margin-left: 30px;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .logo-container h1 {
+        margin-left: 50px;
+    }
+}
