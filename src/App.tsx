@@ -1,15 +1,14 @@
 import './assets/styles/custom.scss';
 import './App.css';
 import Navbar from 'components/Navbar';
-import LoginCard from 'components/LoginCard';
-import MovieList from 'pages/MovieList';
+import MovieReview from 'pages/MovieReview';
 
 function App() {
 
   return (
     <>
       <Navbar />
-      <MovieList />
+      <MovieReview />
     </>
   );
 }

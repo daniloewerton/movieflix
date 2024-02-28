@@ -1,0 +1,31 @@
+.review-container {
+    padding: 10px;
+}
+
+.review-container h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+@media (min-width: 576px) {
+
+    .review-container {
+        padding: 20px;
+    }
+    
+    .review-container h1 {
+        font-size: 32px;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .review-container {
+        padding: 50px;
+    }
+    
+    .review-container h1 {
+        font-size: 48px;
+    }
+}

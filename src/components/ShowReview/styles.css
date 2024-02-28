@@ -1,0 +1,85 @@
+.main-show-review {
+    display: flex;
+    justify-content: center;
+}
+
+.show-review-container {
+    width: 300px;
+    height: auto;
+    margin-top: 20px;
+}
+
+.review {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.review img {
+    width: 12.95px;
+    height: 15.64px;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.review span {
+    color: white;
+    font-weight: 700;
+}
+
+.box-review {
+    display: flex;
+    justify-content: center;
+}
+
+.user-review {
+    width: 280px;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #E1E1E1;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.user-review span {
+    color: #9E9E9E;
+    font-size: 16px;
+}
+
+@media (min-width: 576px) {
+
+    .show-review-container {
+        width: 550px;
+    }
+
+    .user-review {
+        width: 520px;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .show-review-container {
+        width: 660px;
+    }
+
+    .user-review {
+        width: 630px;
+        height: 80px;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .show-review-container {
+        width: 1130px;
+    }
+
+    .user-review {
+        width: 1075px;
+        height: 50px;
+        margin-bottom: 30px;
+    }
+}
