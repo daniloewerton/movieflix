@@ -1,0 +1,22 @@
+.main-button-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+}
+
+.exit-button-container {
+    border: 1px solid black;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    text-align: center;
+    text-transform: uppercase;
+
+}
+
+.exit-button-content {
+    color: black;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
