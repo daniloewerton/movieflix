@@ -8,6 +8,11 @@
     font-size: 24px;
     margin-left: 18px;
     font-weight: 700;
+    color: black;
+}
+
+.logo-container a {
+    text-decoration: none;
 }
 
 @media (min-width: 576px) {
