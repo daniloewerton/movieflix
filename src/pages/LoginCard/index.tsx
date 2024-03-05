@@ -1,7 +1,37 @@
 import './styles.css';
 import MovieImage from 'assets/images/movie-image.svg';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { requestBackendLogin, saveLocalStorageData } from 'util/authentication';
 
 export default function LoginCard() {
+  type FormData = {
+    username: string;
+    password: string;
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
+
+  const [hasError, setHasError] = useState(false);
+
+  const onSubmit = (formData: FormData) => {
+    console.log(formData);
+    requestBackendLogin(formData)
+      .then((response) => {
+        setHasError(false);
+        saveLocalStorageData(response.data);
+        console.log('SUCESSO', response);
+      })
+      .catch((error) => {
+        setHasError(true);
+        console.log('ERRO', error);
+      });
+  };
+
   return (
     <div className="main-container">
       <div className="movie-container">
@@ -18,19 +48,34 @@ export default function LoginCard() {
         </div>
 
         <div className="form-container">
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            {hasError && (
+              <div className="alert alert-danger">Erro ao efetuar o login</div>
+            )}
+            <div className="invalid-feedback d-block">
+              {errors.username?.message}
+            </div>
             <input
-              className="email-input"
+              {...register('username', {
+                required: 'Campo obrigatório',
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: 'Email inválido',
+                },
+              })}
               type="text"
-              name=""
-              value=""
+              name="username"
               placeholder="Email"
             ></input>
+            <div className="invalid-feedback d-block">
+              {errors.password?.message}
+            </div>
             <input
-              className="password-input"
-              type="text"
-              name=""
-              value=""
+              {...register('password', {
+                required: 'Campo obrigatório',
+              })}
+              type="password"
+              name="password"
               placeholder="Senha"
             ></input>
 

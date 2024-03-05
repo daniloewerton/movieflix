@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://movieflix-devsuperior.herokuapp.com';
