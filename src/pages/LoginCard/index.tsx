@@ -2,6 +2,7 @@ import './styles.css';
 import MovieImage from 'assets/images/movie-image.svg';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 import { requestBackendLogin, saveLocalStorageData } from 'util/authentication';
 
 export default function LoginCard() {
@@ -18,6 +19,8 @@ export default function LoginCard() {
 
   const [hasError, setHasError] = useState(false);
 
+  const history = useHistory();
+
   const onSubmit = (formData: FormData) => {
     console.log(formData);
     requestBackendLogin(formData)
@@ -25,6 +28,7 @@ export default function LoginCard() {
         setHasError(false);
         saveLocalStorageData(response.data);
         console.log('SUCESSO', response);
+        history.push('/movies');
       })
       .catch((error) => {
         setHasError(true);

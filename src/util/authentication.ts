@@ -1,7 +1,8 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import qs from 'qs';
 import { LoginData } from "types/LoginData";
 import { BASE_URL } from './requests';
+import { LoginResponse } from 'types/LoginResponse';
 
 const CLIENT_ID = 'myclientid';
 const CLIENT_SECRET = 'myclientsecret';
@@ -27,4 +28,19 @@ export const requestBackendLogin = (loginData : LoginData) => {
 
 export const saveLocalStorageData = (loginData : LoginData) => {
     localStorage.setItem('authContent', JSON.stringify(loginData));
+}
+
+export const getLocalStorageData = () => {
+    const storage = localStorage.getItem('authContent') ?? '{}';
+    return JSON.parse(storage) as LoginResponse;
+}
+
+export const requestBackEnd = (axiosConfig : AxiosRequestConfig) => {
+
+    const headers = axiosConfig.withCredentials ? {
+        ...axiosConfig.headers,
+        Authorization: "Bearer " + getLocalStorageData().access_token
+    } : axiosConfig.headers;
+
+    return axios({...axiosConfig, baseURL: BASE_URL, headers});
 }
