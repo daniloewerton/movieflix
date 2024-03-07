@@ -1,6 +1,7 @@
+import { AuthContext } from 'AuthContext';
 import './styles.css';
 import MovieImage from 'assets/images/movie-image.svg';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { requestBackendLogin, saveLocalStorageData } from 'util/authentication';
@@ -18,7 +19,7 @@ export default function LoginCard() {
   } = useForm<FormData>();
 
   const [hasError, setHasError] = useState(false);
-
+  const { setAuthContextData } = useContext(AuthContext);
   const history = useHistory();
 
   const onSubmit = (formData: FormData) => {
@@ -29,6 +30,9 @@ export default function LoginCard() {
         saveLocalStorageData(response.data);
         console.log('SUCESSO', response);
         history.push('/movies');
+        setAuthContextData({
+          authenticated: true,
+        });
       })
       .catch((error) => {
         setHasError(true);

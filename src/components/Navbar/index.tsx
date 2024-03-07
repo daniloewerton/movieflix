@@ -1,24 +1,24 @@
 import { NavLink } from 'react-router-dom';
 import './styles.css';
 import ExitButton from './ExitButton';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { getTokenData, isAuthenticated } from 'util/authentication';
-import { AuthData } from 'types/AuthData';
+import { AuthContext } from 'AuthContext';
 
 export default function Navbar() {
-  const [authData, setAuthData] = useState<AuthData>({ authenticated: false });
+  const { authContextData, setAuthContextData } = useContext(AuthContext);
 
   useEffect(() => {
     if (isAuthenticated()) {
-      setAuthData({
+      setAuthContextData({
         authenticated: true,
         tokenData: getTokenData(),
       });
     } else {
-      setAuthData({
+      setAuthContextData({
         authenticated: false,
       });
-    };
+    }
   }, []);
 
   return (
@@ -28,7 +28,7 @@ export default function Navbar() {
           <h1>MovieFlix</h1>
         </NavLink>
       </div>
-      <div>{authData.authenticated ? <ExitButton /> : <></>}</div>
+      <div>{authContextData.authenticated ? <ExitButton /> : <></>}</div>
     </div>
   );
 }
