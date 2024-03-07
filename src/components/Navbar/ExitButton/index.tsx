@@ -4,7 +4,6 @@ import { removeLocalStorage } from 'util/authentication';
 
 export default function ExitButton() {
   const history = useHistory();
-
   const handleLogout = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     removeLocalStorage();
