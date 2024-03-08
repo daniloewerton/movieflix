@@ -30,7 +30,7 @@ export default function MovieReview() {
   return (
     <div className="review-container">
       <h1>Tela detalhes do filme de id: {movieId}</h1>
-      {hasAnyRoles(['ROLE_MEMBER']) && <ReviewCard />}
+      {hasAnyRoles(['ROLE_MEMBER']) && <ReviewCard movieId={movieId} />}
       <ShowReview />
     </div>
   );

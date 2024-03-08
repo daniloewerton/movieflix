@@ -25,7 +25,7 @@ export default function ShowReview() {
     requestBackEnd(request).then((response) => {
       setReview(response.data);
     });
-  }, [movieId]);
+  }, [movieId, review]);
 
   return (
     <>
@@ -38,7 +38,7 @@ export default function ShowReview() {
                 <span>{review.user.name}</span>
               </div>
 
-              <div className=" box-review">
+              <div className="box-review">
                 <div className="user-review">
                   <span>{review.text}</span>
                 </div>
